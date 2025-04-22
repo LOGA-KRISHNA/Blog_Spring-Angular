@@ -46,4 +46,15 @@ public class PostController {
             return ResponseEntity.status(HttpStatus.INTERNAL_SERVER_ERROR).build();
         }
     }
+
+    @PutMapping("/{postId}/like")
+    public ResponseEntity<?> likepost(@PathVariable Long postId){
+        try{
+            postService.likepost(postId);
+            return ResponseEntity.ok(new String[]{"Post Liked Successfully"});
+        }
+        catch (Exception e){
+            return ResponseEntity.status(HttpStatus.NOT_FOUND).body(e.getLocalizedMessage());
+        }
+    }
 }
