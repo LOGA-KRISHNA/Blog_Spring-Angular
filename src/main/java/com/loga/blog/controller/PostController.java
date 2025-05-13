@@ -41,6 +41,7 @@ public class PostController {
     public ResponseEntity<?> getPostById(@PathVariable long id){
         try{
             Post post=postService.getPostById(id);
+            post.setViewcount(post.getViewcount()+1);
             post.setLikecount(post.getLikecount()+1);
             return ResponseEntity.ok(post);
         }
