@@ -15,7 +15,7 @@ public class CommentController {
     private CommentService commentService;
 
     @PostMapping("comment/create")
-    public ResponseEntity<?> createComment(@RequestParam Long post_id, @RequestParam String postedBy, @RequestBody String content ){
+    public ResponseEntity<?> createComment(@RequestParam Long post_id, @RequestParam String postedBy, @RequestParam String content ){
         try{
             return ResponseEntity.ok(commentService.createComment(post_id,postedBy,content));
         }
